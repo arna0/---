@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NIS Portal API</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.17.14/swagger-ui.css" />
+  <style>
+    body { margin: 0; background: #fff; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .banner { background: #0f3d5c; color: #fff; padding: 14px 16px; }
+    .banner h1 { margin: 0 0 4px; font-size: 20px; }
+    .banner p { margin: 0; font-size: 14px; opacity: .9; line-height: 1.5; }
+    .banner a { color: #9fd8ff; }
+    .swagger-ui .topbar { display: none; }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <h1>🏫 NIS Portal API</h1>
+    <p>Interactive reference for the school portal backend: teachers, classes, students, schedule, criteria-based assessment and announcements.
+      This page is read-only (GitHub Pages has no server). To send requests, run the API locally with <code>docker compose up</code> and open <code>/docs</code>.
+      Source: <a href="https://github.com/arna0/---">github.com/arna0/---</a></p>
+  </div>
+  <div id="swagger"></div>
+  <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.17.14/swagger-ui-bundle.js"></script>
+  <script>
+    window.ui = SwaggerUIBundle({
+      url: 'openapi.json',
+      dom_id: '#swagger',
+      deepLinking: true,
+      docExpansion: 'list',
+      supportedSubmitMethods: [],
+      defaultModelsExpandDepth: 0,
+    });
+  </script>
+</body>
+</html>

@@ -1,5 +1,7 @@
 # 🏫 NIS Portal API
 
+### ▶ [Interactive API reference](https://arna0.github.io/---/): browse every endpoint and schema in the browser
+
 Backend for a school portal built around how Nazarbayev Intellectual Schools actually work: specialised classes, a weekly schedule, and **criteria-based assessment** (formative assessment, SOR and SOCh summative assessments) with an automatic report card per student.
 
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
