@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NIS Portal API</title>
+  <title>NIS Portal API · student project documentation</title>
+  <meta name="description" content="API documentation for NIS Portal API, an open-source student project by Arnur. Read-only reference, no sign-in, no downloads. Not an official Nazarbayev Intellectual Schools website." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.17.14/swagger-ui.css" />
@@ -46,14 +47,15 @@
       <p class="lead" data-en="Backend for a school portal built around how Nazarbayev Intellectual Schools work: classes, students and teachers, the timetable, criteria-based assessment (FO, SOR, SOCh) with report cards, and announcements."
          data-ru="Бэкенд школьного портала, устроенный так, как работают НИШ: классы, ученики и учителя, расписание, критериальное оценивание (ФО, СОР, СОЧ) с табелем и объявления."></p>
       <div class="facts">
+        <span data-en="Student project · not an official NIS website" data-ru="Студенческий проект · не официальный сайт НИШ"></span>
         <span>FastAPI · async SQLAlchemy · PostgreSQL</span>
         <span data-en="~40 endpoints under /api/v1" data-ru="~40 эндпоинтов в /api/v1"></span>
-        <span><a href="https://github.com/arna0/---" data-en="Source on GitHub" data-ru="Код на GitHub"></a></span>
+        <span><a href="https://github.com/arna0/nis-portal-api" data-en="Source on GitHub" data-ru="Код на GitHub"></a></span>
       </div>
     </div>
   </header>
-  <p class="wrap note" data-en="Read-only: GitHub Pages has no server or database. To send requests, run docker compose up and open /docs."
-     data-ru="Только просмотр: на GitHub Pages нет сервера и базы данных. Чтобы отправлять запросы, запустите docker compose up и откройте /docs."></p>
+  <p class="wrap note" data-en="Read-only documentation: no sign-in, no forms, nothing to download. GitHub Pages has no server or database. To send requests, run docker compose up and open /docs."
+     data-ru="Только документация: без входа, форм и загрузок. На GitHub Pages нет сервера и базы данных. Чтобы отправлять запросы, запустите docker compose up и откройте /docs."></p>
   <div id="swagger"></div>
   <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.17.14/swagger-ui-bundle.js"></script>
   <script>
