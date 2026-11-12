@@ -32,6 +32,7 @@ jobs:
         run: |
           mkdir -p site
           python -c "import json; from app.main import app; json.dump(app.openapi(), open('site/openapi.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=2)"
+          python docs-site/translate_openapi.py site/openapi.json site/openapi.en.json
           cp docs-site/index.html site/index.html
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -4,34 +4,78 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NIS Portal API</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.17.14/swagger-ui.css" />
   <style>
-    body { margin: 0; background: #fff; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
-    .banner { background: #0f3d5c; color: #fff; padding: 14px 16px; }
-    .banner h1 { margin: 0 0 4px; font-size: 20px; }
-    .banner p { margin: 0; font-size: 14px; opacity: .9; line-height: 1.5; }
-    .banner a { color: #9fd8ff; }
-    .swagger-ui .topbar { display: none; }
+    :root { --ink: #14212b; --muted: #5b6b77; --line: #e3e8ec; --accent: #0e6e5c; --bg: #f6f7f5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Onest", system-ui, sans-serif; }
+    header { background: #fff; border-bottom: 1px solid var(--line); }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0 6px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; }
+    .mark { width: 32px; height: 32px; border-radius: 8px; background: var(--accent); color: #fff; display: grid; place-items: center; font-size: 15px; }
+    .switch { display: flex; border: 1px solid var(--line); border-radius: 8px; padding: 2px; }
+    .switch button { border: 0; background: none; font: 600 12px "Onest", sans-serif; color: var(--muted); padding: 5px 10px; border-radius: 6px; cursor: pointer; }
+    .switch button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+    .lead { color: var(--muted); font-size: 15px; line-height: 1.55; max-width: 760px; margin: 6px 0 14px; }
+    .facts { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 18px; }
+    .facts span { font-size: 12px; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; color: var(--muted); background: #fff; }
+    .facts a { color: var(--accent); }
+    .note { font-size: 13px; color: var(--muted); padding: 10px 0 0; }
+    code { font-family: "JetBrains Mono", monospace; font-size: 12px; background: #eef2f0; padding: 1px 5px; border-radius: 4px; }
+    #swagger { background: #fff; border: 1px solid var(--line); border-radius: 12px; margin: 20px auto 40px; max-width: 1100px; }
+    .swagger-ui .topbar, .swagger-ui .info { display: none; }
+    .swagger-ui, .swagger-ui .opblock-tag, .swagger-ui .opblock .opblock-summary-description { font-family: "Onest", system-ui, sans-serif; }
+    .swagger-ui .opblock-tag { font-size: 18px; font-weight: 600; }
+    .swagger-ui .scheme-container { box-shadow: none; border-bottom: 1px solid var(--line); }
+    @media (max-width: 600px) { #swagger { border-radius: 0; border-left: 0; border-right: 0; } }
   </style>
 </head>
 <body>
-  <div class="banner">
-    <h1>🏫 NIS Portal API</h1>
-    <p>Interactive reference for the school portal backend: teachers, classes, students, schedule, criteria-based assessment and announcements.
-      This page is read-only (GitHub Pages has no server). To send requests, run the API locally with <code>docker compose up</code> and open <code>/docs</code>.
-      Source: <a href="https://github.com/arna0/---">github.com/arna0/---</a></p>
-  </div>
+  <header>
+    <div class="wrap">
+      <div class="top">
+        <div class="brand"><span class="mark">N</span> NIS Portal API</div>
+        <div class="switch" role="group" aria-label="Language">
+          <button data-lang="en">EN</button>
+          <button data-lang="ru">RU</button>
+        </div>
+      </div>
+      <p class="lead" data-en="Backend for a school portal built around how Nazarbayev Intellectual Schools work: classes, students and teachers, the timetable, criteria-based assessment (FO, SOR, SOCh) with report cards, and announcements."
+         data-ru="Бэкенд школьного портала, устроенный так, как работают НИШ: классы, ученики и учителя, расписание, критериальное оценивание (ФО, СОР, СОЧ) с табелем и объявления."></p>
+      <div class="facts">
+        <span>FastAPI · async SQLAlchemy · PostgreSQL</span>
+        <span data-en="~40 endpoints under /api/v1" data-ru="~40 эндпоинтов в /api/v1"></span>
+        <span><a href="https://github.com/arna0/---" data-en="Source on GitHub" data-ru="Код на GitHub"></a></span>
+      </div>
+    </div>
+  </header>
+  <p class="wrap note" data-en="Read-only: GitHub Pages has no server or database. To send requests, run docker compose up and open /docs."
+     data-ru="Только просмотр: на GitHub Pages нет сервера и базы данных. Чтобы отправлять запросы, запустите docker compose up и откройте /docs."></p>
   <div id="swagger"></div>
   <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.17.14/swagger-ui-bundle.js"></script>
   <script>
-    window.ui = SwaggerUIBundle({
-      url: 'openapi.json',
-      dom_id: '#swagger',
-      deepLinking: true,
-      docExpansion: 'list',
-      supportedSubmitMethods: [],
-      defaultModelsExpandDepth: 0,
-    });
+    const KEY = 'nis_docs_lang';
+    function render(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-en]').forEach(el => { el.textContent = el.dataset[lang]; });
+      document.querySelectorAll('.switch button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+      try { localStorage.setItem(KEY, lang); } catch (e) {}
+      SwaggerUIBundle({
+        url: lang === 'en' ? 'openapi.en.json' : 'openapi.json',
+        dom_id: '#swagger',
+        deepLinking: true,
+        docExpansion: 'list',
+        supportedSubmitMethods: [],
+        defaultModelsExpandDepth: 0,
+      });
+    }
+    document.querySelectorAll('.switch button').forEach(b => b.addEventListener('click', () => render(b.dataset.lang)));
+    let saved = new URLSearchParams(location.search).get('lang');
+    if (!saved) { try { saved = localStorage.getItem(KEY); } catch (e) {} }
+    render(saved === 'ru' ? 'ru' : 'en');
   </script>
 </body>
 </html>
